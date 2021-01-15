@@ -1,6 +1,8 @@
 
 use react to write Sciterjs programs that support browser and desktop;
 
+![screen](/screen.png)
+
 notice:
 1. When writing css, use x instead of * and o instead of %. For example:
 
