@@ -29,7 +29,7 @@ class Clock extends React.Component {
         let time = this.state.time.toLocaleTimeString();
 
         return (
-            <div style={{ flex: 1, width: "*" }} >
+            <div style={{ flex: 1, width: "*" }} id={this.props.id}>
                 <div>{time}</div>
             </div>
         )

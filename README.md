@@ -14,6 +14,8 @@ notice:
 
 2. If the element has clickable events, append behavior: "clickable" to the element. See app.jsx
 
+3. **buildaardio 编译后请在aardio资源文件上右键选择 "同步本地目录"，不然新编译的资源在aardio中运行不会生效**
+
 
 install
 ```sh
@@ -35,6 +37,11 @@ npm run buildwww
 2、sciterjs
 ```sh
 npm run buildscapp
+```
+
+3、aardio
+```sh
+npm run buildaardio
 ```
 
 inspector:

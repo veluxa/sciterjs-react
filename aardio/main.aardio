@@ -1,0 +1,53 @@
+ import win.ui;
+/*DSG{{*/
+var winform = win.form(text="sciterjs-arrdio";right=761;bottom=609)
+winform.add(
+custom={cls="custom";text="自定义控件";left=0;top=55;right=762;bottom=610;ah=1;aw=1;z=1};
+doscript={cls="button";text="调用sciterjs";left=18;top=12;right=90;bottom=39;z=2};
+getTime={cls="button";text="获取时间";left=107;top=12;right=178;bottom=39;z=3}
+)
+/*}}*/
+
+import web.sciter;
+
+//自定义behavior
+namespace web.sciter.behavior.customEvent { 
+
+	testJs = function(ltOwner,...){ 
+		import console
+		console.log("behavior里的函数 testJs 被调用了");
+		console.log("自定义函数接收到的第一个参数总是节点自身")
+		console.log("然后才是其他参数",...)
+		
+		//aardio里调用behavior自定义函数的方法是一样的,提供一模一样的xcall函数
+		ltOwner.xcall("testJs2",...)
+	}
+	
+	testJs2 = function(ltOwner,...){
+		console.log("behavior里的函数 testJs2 被调用了",...)
+		console.log("自定义函数接收到的第一个参数总是节点自身")
+		console.log(ltOwner.outerHTML)
+	}
+
+}
+
+var wbSciter = web.sciter( winform.custom );
+wbSciter.go("\layout\index.html");
+
+if(_STUDIO_INVOKED){
+	import web.sciter.debug;
+	wbSciter.attachEventHandler( web.sciter.debug );
+}
+
+winform.getTime.oncommand = function(id,event){
+	var time = wbSciter.documentElement.querySelector("#clock").innerText
+	winform.msgbox(time)
+}
+
+winform.doscript.oncommand = function(id,event){
+	var app = wbSciter.call("jsFunction")
+	winform.msgbox(app)
+}
+
+winform.show() 
+win.loopMessage();

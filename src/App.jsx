@@ -6,20 +6,20 @@ import './App.scss';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
+    <div className="app">
+      <header className="app-header">
         <div className="flex c-align">
-          <img src={reactLogo} className="App-logo" alt="logo" />
-          <img src={sciterLogo} className="App-logo" alt="logo" />
+          <img src={reactLogo} className="app-logo" alt="logo" />
+          <img src={sciterLogo} className="app-logo" alt="logo" />
         </div>
-        <Clock />
+        <Clock id="clock" />
         <p>
           Edit <code>src/App.jsx</code> and save to reload browser.
         </p>
         <div className="flex c-align">
           <a
             style={{ behavior: "clickable" }} // for sciterjs
-            className="App-link"
+            className="app-link"
             href="https://reactjs.org"
             onClick={
               e => {
@@ -32,8 +32,22 @@ function App() {
             Learn React
           </a>
           <a
+            style={{ behavior: "customEvent clickable" }} // for sciterjs
+            className="app-link aardio-link"
+            href="http://bbs.aardio.com/"
+            onClick={
+              e => {
+                if (window.platform) {
+                  e.currentTarget.xcall("testJs", "hello", "aardio")
+                }
+              }
+            }
+          >
+            aardio 交互
+          </a>
+          <a
             style={{ behavior: "clickable" }}
-            className="App-link"
+            className="app-link"
             href="https://github.com/veluxa/sciterjs-react"
             onClick={
               e => {

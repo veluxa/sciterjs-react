@@ -9,6 +9,7 @@
     "dev": "webpack-dev-server --config webpack.dev.conf.js --hot --inline",
     "buildwww": "webpack --config webpack.prod.conf.js",
     "buildscapp": "SET PLATFORM=sciter && webpack --config webpack.prod.conf.js && scapp.exe ./dist/index.html",
+    "buildaardio": "SET PLATFORM=sciter && webpack --config webpack.aardio.prod.conf.js",
     "scapp": "scapp.exe ./dist/index.html",
     "inspector": "inspector.exe"
   },

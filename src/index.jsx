@@ -3,6 +3,11 @@ import render from "./react/ReactDOM";
 import App from './App';
 import "./index.scss";
 
+// for aardio
+window.jsFunction = function () {
+    return "Functions in sciterjs are called by aardio";
+}
+
 render(
     <App />,
     document.querySelector("#root")
