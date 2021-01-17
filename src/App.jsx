@@ -1,4 +1,4 @@
-import React from "./react";
+import React from "sciterjs-react";
 import reactLogo from './logo.svg';
 import sciterLogo from "./logo.png";
 import Clock from "./component/clock";

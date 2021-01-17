@@ -1,10 +1,12 @@
 {
-  "name": "sciterjs-react",
+  "name": "sciterjs-react-template",
   "version": "0.1.0",
   "private": true,
   "author": "veluxa",
   "git repository": "https://github.com/veluxa/sciterjs-react",
-  "dependencies": {},
+  "dependencies": {
+    "sciterjs-react": "^1.0.2"
+  },
   "scripts": {
     "dev": "webpack-dev-server --config webpack.dev.conf.js --hot --inline",
     "buildwww": "webpack --config webpack.prod.conf.js",

@@ -1,4 +1,4 @@
-import React from "../../react";
+import React from "sciterjs-react";
 
 class Clock extends React.Component {
     constructor() {

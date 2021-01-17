@@ -1,5 +1,4 @@
-import React from "./react";
-import render from "./react/dom";
+import React from "sciterjs-react";
 import App from './App';
 import "./index.scss";
 
@@ -8,7 +7,7 @@ window.jsFunction = function () {
     return "Functions in sciterjs are called by aardio";
 }
 
-render(
+React.render(
     <App />,
     document.querySelector("#root")
 );
