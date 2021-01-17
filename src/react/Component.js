@@ -1,11 +1,11 @@
-import * as _ from './util'
+import * as _ from './utils'
 import {
 	renderComponent,
 	clearPending,
 	compareTwoVnodes,
 	getChildContext,
 	syncCache
-} from './virtual-dom'
+} from './dom/virtualDom'
 
 // 更新队列
 export let updateQueue = {

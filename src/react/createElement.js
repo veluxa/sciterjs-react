@@ -3,7 +3,7 @@ import {
 	VSTATELESS,
 	VCOMPONENT
 } from './constant'
-import { createVnode } from './virtual-dom'
+import { createVnode } from './dom/virtualDom'
 
 // 第一个核心api 构建虚拟dom的object
 export default function createElement(type, props, ...children) {

@@ -1,6 +1,6 @@
 import { VELEMENT, VSTATELESS, POOL_SIZE } from "./constant";
-import { isValidElement, cloneAndReplaceKey, getElementKey } from './ReactElement';
-import { getIteratorFn, invariant } from "./util";
+import { isValidElement, cloneAndReplaceKey, getElementKey } from './element';
+import { getIteratorFn, invariant } from "./utils";
 
 const SEPARATOR = '.';
 const SUBSEPARATOR = ':';
