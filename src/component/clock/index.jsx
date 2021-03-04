@@ -1,18 +1,42 @@
 import React from "sciterjs-react";
 
 class Clock extends React.Component {
-    constructor() {
-        super();
+    constructor(props = {}) {
+        super(props);
         this.state = { time: new Date() };
     }
 
-    // Lifecycle: Called whenever our component gets attached to real DOM element
+    // Lifecycle: before the component gets mounted to the DOM
+    componentWillMount() {
+
+    }
+
+    // Lifecycle: after the component gets mounted to the DOM
     componentDidMount() {
         // update time every second
         this.timer = setInterval(() => this.tick(), 1000);
     }
+    
+    // Lifecycle: before new props get accepted
+    componentWillReceiveProps(props) {
+        
+    }
 
-    // Lifecycle: Called just before our component will be destroyed
+    shouldComponentUpdate() {
+
+    }
+    
+    // Lifecycle: Called just before our component will be update
+    componentWillUpdate() {
+        
+    }
+    
+    // Lifecycle: Called just after our component updated
+    componentDidUpdate() {
+        
+    }
+
+    // Lifecycle: prior to removal from the DOM
     componentWillUnmount() {
         // stop when not renderable
         clearInterval(this.timer);
