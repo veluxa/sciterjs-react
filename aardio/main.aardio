@@ -9,6 +9,8 @@ getTime={cls="button";text="获取时间";left=107;top=12;right=178;bottom=39;z=
 /*}}*/
 
 import web.sciter;
+import web.sciter.debug;
+import console;
 
 //自定义behavior
 namespace web.sciter.behavior.customEvent { 
@@ -32,12 +34,12 @@ namespace web.sciter.behavior.customEvent {
 }
 
 var wbSciter = web.sciter( winform.custom );
-wbSciter.go("\layout\index.html");
 
 if(_STUDIO_INVOKED){
-	import web.sciter.debug;
 	wbSciter.attachEventHandler( web.sciter.debug );
 }
+
+wbSciter.go("\layout\index.html");
 
 winform.getTime.oncommand = function(id,event){
 	var time = wbSciter.documentElement.querySelector("#clock").innerText

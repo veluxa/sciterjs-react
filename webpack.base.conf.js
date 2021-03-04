@@ -10,6 +10,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const appDirectory = fs.realpathSync(process.cwd());
 const resolveApp = relativePath => path.resolve(appDirectory, relativePath);
 const appSrc = resolveApp('src')
+const preactPath = path.resolve(appSrc, 'react', 'compat')
 const platform = process.env.PLATFORM
 
 module.exports = {
@@ -20,7 +21,7 @@ module.exports = {
                 include: [
                     appSrc
                 ],
-                exclude: /node_modules/,
+                // exclude: /node_modules/,
                 use: 'babel-loader'
             },
             {
@@ -28,10 +29,8 @@ module.exports = {
                 use: "url-loader"
             },
             {
-                test: /\.css$/,
-                exclude: [
-                    path.resolve(__dirname, 'node_modules')
-                ],
+                test: /(\.css|\.less)$/,
+                exclude: /node_modules/,
                 use: ExtractTextPlugin.extract({
                     fallback: {// 这里表示不提取的时候，使用什么样的配置来处理css
                         loader: 'style-loader',
@@ -40,11 +39,26 @@ module.exports = {
                         }
                     },
                     use: [
-
                         MiniCssExtractPlugin.loader,
                         "css-loader", "sciter-css-loader", "postcss-loader"
                     ]
                 })
+            },
+            {
+                test: /(\.css|\.less)$/,
+                exclude: /src/,
+                use: [
+                    'style-loader', "css-loader",
+                    {
+                        loader: 'less-loader',
+                        options: {
+                            lessOptions: {
+                                javascriptEnabled: true
+                            }
+                        }
+                    },
+                    // MiniCssExtractPlugin.loader
+                ]
             },
             {
                 test: /\.scss$/,
@@ -60,7 +74,12 @@ module.exports = {
     },
     resolve: {
         modules: [path.resolve(__dirname, 'src'), 'node_modules'],
-        extensions: [".jsx", ".tsx", ".ts", ".js"]
+        extensions: [".jsx", ".tsx", ".ts", ".js"],
+        alias: {
+            'react': preactPath,
+            'react-dom': preactPath,
+            // 'create-react-class': './preact-compat'
+        }
     },
     resolveLoader: {
         modules: [path.join(__dirname, './loaders'), 'node_modules']
@@ -89,6 +108,6 @@ module.exports = {
         }),
         new MiniCssExtractPlugin({
             filename: '[name]-[contenthash].css'
-        })
+        }),
     ]
 };

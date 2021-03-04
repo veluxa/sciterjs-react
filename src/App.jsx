@@ -1,25 +1,34 @@
-import React from "sciterjs-react";
+import React, { useState } from "./react";
 import reactLogo from './logo.svg';
 import sciterLogo from "./logo.png";
 import Clock from "./component/clock";
 import './App.scss';
 
-function App() {
+const App = () => {
+
+  let [count, SetCount] = useState(0)
+
   return (
-    <div className="app">
-      <header className="app-header">
-        <div className="flex c-align">
-          <img src={reactLogo} className="app-logo" alt="logo" />
-          <img src={sciterLogo} className="app-logo" alt="logo" />
+    <div class="app">
+      <header class="app-header">
+        <div class="flex c-align">
+          <img src={reactLogo} class="app-logo" alt="logo" />
+          <img src={sciterLogo} class="app-logo" alt="logo" />
         </div>
         <Clock id="clock" />
+        <div>
+          <label>Hook：</label>
+          <button onClick={e => SetCount(count -= 1)}>-</button>
+          {count}
+          <button onClick={e => SetCount(count += 1)}>+</button>
+        </div>
         <p>
           Edit <code>src/App.jsx</code> and save to reload browser.
         </p>
-        <div className="flex c-align">
+        <div class="flex c-align">
           <a
             style={{ behavior: "clickable" }} // for sciterjs
-            className="app-link"
+            class="app-link"
             href="https://reactjs.org"
             onClick={
               e => {
@@ -29,11 +38,11 @@ function App() {
               }
             }
           >
-            Learn React
+            Learn Preact
           </a>
           <a
             style={{ behavior: "customEvent clickable" }} // for sciterjs
-            className="app-link aardio-link"
+            class="app-link aardio-link"
             href="http://bbs.aardio.com/"
             onClick={
               e => {
@@ -47,7 +56,7 @@ function App() {
           </a>
           <a
             style={{ behavior: "clickable" }}
-            className="app-link"
+            class="app-link"
             href="https://github.com/veluxa/sciterjs-react"
             onClick={
               e => {

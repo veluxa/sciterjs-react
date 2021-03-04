@@ -12,7 +12,7 @@ use react to write Sciterjs programs that support browser and desktop;
 >
 > [x] class component (Lifecycle,State)
 >
-> [ ] function component (hook is not currently available)
+> [x] function component (hook)
 
 ---
 
