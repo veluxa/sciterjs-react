@@ -10,7 +10,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const appDirectory = fs.realpathSync(process.cwd());
 const resolveApp = relativePath => path.resolve(appDirectory, relativePath);
 const appSrc = resolveApp('src')
-const preactPath = path.resolve(appSrc, 'react', 'compat')
+const preactPath = path.resolve(appSrc, 'react')
 const platform = process.env.PLATFORM
 
 module.exports = {

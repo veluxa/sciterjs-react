@@ -8,6 +8,14 @@ const App = () => {
 
   let [count, SetCount] = useState(0)
 
+  const onMinusBtnClick = (e) => {
+    SetCount(count -= 1)
+  }
+
+  const onAddBtnClick = (e) => {
+    SetCount(count += 1)
+  }
+
   return (
     <div class="app">
       <header class="app-header">
@@ -17,10 +25,10 @@ const App = () => {
         </div>
         <Clock id="clock" />
         <div>
-          <label>Hook：</label>
-          <button onClick={e => SetCount(count -= 1)}>-</button>
+          <span>Hook：</span>
+          <button id="minusbtn" onClick={onMinusBtnClick}>-</button>  {/** not working **/}
           {count}
-          <button onClick={e => SetCount(count += 1)}>+</button>
+          <button id="addbtn" onClick={onAddBtnClick}>+</button> {/** working **/}
         </div>
         <p>
           Edit <code>src/App.jsx</code> and save to reload browser.
@@ -29,11 +37,11 @@ const App = () => {
           <a
             style={{ behavior: "clickable" }} // for sciterjs
             class="app-link"
-            href="https://reactjs.org"
+            href="https://preactjs.com/"
             onClick={
               e => {
                 if (window.platform) {
-                  window.env.launch("https://reactjs.org")
+                  window.env.launch("https://preactjs.com/")
                 }
               }
             }
