@@ -26,9 +26,9 @@ const App = () => {
         <Clock id="clock" />
         <div>
           <span>Hook：</span>
-          <button id="minusbtn" onClick={onMinusBtnClick}>-</button>  {/** not working **/}
+          <button id="minusbtn" onClick={onMinusBtnClick}>-</button>
           {count}
-          <button id="addbtn" onClick={onAddBtnClick}>+</button> {/** working **/}
+          <button id="addbtn" onClick={onAddBtnClick}>+</button>
         </div>
         <p>
           Edit <code>src/App.jsx</code> and save to reload browser.
