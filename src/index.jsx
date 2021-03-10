@@ -1,4 +1,4 @@
-import React from "./react";
+import React from "sciterjs-react";
 import App from './App';
 import "./index.scss";
 

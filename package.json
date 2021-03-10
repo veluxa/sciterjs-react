@@ -7,10 +7,11 @@
   "scripts": {
     "dev": "webpack-dev-server --config webpack.dev.conf.js --hot --inline",
     "buildwww": "webpack --config webpack.prod.conf.js",
-    "scapp": "%cd%/bin/scapp.exe ./dist/index.html",
+    "scapp": "%cd%/bin/windows/scapp.exe ./dist/index.html",
+    "macScapp": "./bin/macosx/scapp.exe ./dist/index.html",
     "buildscapp": "SET PLATFORM=sciter && webpack --config webpack.prod.conf.js && npm run scapp",
     "buildaardio": "SET PLATFORM=sciter && webpack --config webpack.aardio.prod.conf.js",
-    "inspector": "%cd%/bin/inspector.exe"
+    "inspector": "%cd%/bin/windows/inspector.exe"
   },
   "keywords": [
     "sciterjs"
@@ -65,5 +66,7 @@
     "webpack-dev-server": "^3.11.0",
     "webpack-merge": "^5.7.3"
   },
-  "dependencies": {}
+  "dependencies": {
+    "sciterjs-react": "^1.0.3"
+  }
 }

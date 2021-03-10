@@ -10,7 +10,6 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const appDirectory = fs.realpathSync(process.cwd());
 const resolveApp = relativePath => path.resolve(appDirectory, relativePath);
 const appSrc = resolveApp('src')
-const preactPath = path.resolve(appSrc, 'react')
 const platform = process.env.PLATFORM
 
 module.exports = {
@@ -76,9 +75,8 @@ module.exports = {
         modules: [path.resolve(__dirname, 'src'), 'node_modules'],
         extensions: [".jsx", ".tsx", ".ts", ".js"],
         alias: {
-            'react': preactPath,
-            'react-dom': preactPath,
-            // 'create-react-class': './preact-compat'
+            'react': "sciterjs-react",
+            'react-dom': "sciterjs-react"
         }
     },
     resolveLoader: {
@@ -98,9 +96,9 @@ module.exports = {
             showErrors: true,
             inject: true,
             minify: {
-                removeComments: false, // 改为false
-                collapseWhitespace: false, // 改为false
-                removeAttributeQuotes: false // 改为false
+                removeComments: false,
+                collapseWhitespace: false,
+                removeAttributeQuotes: false
                 // more options:
                 // https://github.com/kangax/html-minifier#options-quick-reference
             },

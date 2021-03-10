@@ -1,4 +1,4 @@
-import React, { useState } from "./react";
+import React, { useState } from "sciterjs-react";
 import reactLogo from './logo.svg';
 import sciterLogo from "./logo.png";
 import Clock from "./component/clock";
@@ -7,14 +7,6 @@ import './App.scss';
 const App = () => {
 
   let [count, SetCount] = useState(0)
-
-  const onMinusBtnClick = (e) => {
-    SetCount(count -= 1)
-  }
-
-  const onAddBtnClick = (e) => {
-    SetCount(count += 1)
-  }
 
   return (
     <div class="app">
@@ -26,9 +18,9 @@ const App = () => {
         <Clock id="clock" />
         <div>
           <span>Hook：</span>
-          <button id="minusbtn" onClick={onMinusBtnClick}>-</button>
+          <button onClick={e => SetCount(count -= 1)}>-</button>
           {count}
-          <button id="addbtn" onClick={onAddBtnClick}>+</button>
+          <button onClick={e => SetCount(count += 1)}>+</button>
         </div>
         <p>
           Edit <code>src/App.jsx</code> and save to reload browser.

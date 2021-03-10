@@ -6,13 +6,12 @@ use react to write Sciterjs programs that support browser and desktop;
 ---
 **Features**:
 
-> [x] style
->
-> [x] className
->
-> [x] class component (Lifecycle,State)
->
-> [x] function component (hook)
+| property | support | note |
+| :-- | :--: | :-- |
+| style | ✔ |  |
+| className | ✔ | The browser supports className, sciter does not support **className** please use **class**  |
+| class component | ✔ | lifecycle,state |
+| function component | ✔ | hook |
 
 ---
 
