@@ -1,5 +1,5 @@
 
-const baseWebpackConfig = require('./webpack.base.conf');
+const baseWebpackConfig = require('./base');
 const { merge } = require('webpack-merge');
 const path = require("path");
 
@@ -9,11 +9,11 @@ module.exports = merge(baseWebpackConfig, {
     mode: 'development',
     entry: [
         `webpack-dev-server/client?http://localhost:${serverPort}`,
-        "./src/index.jsx"
+        "/src/index.jsx"
     ],
     devtool: 'cheap-module-source-map',
     devServer: {
-        contentBase: path.join(__dirname, "dist"),
+        contentBase: path.join(__dirname, "../dist"),
         compress: true,
         port: serverPort,
         publicPath: "/",

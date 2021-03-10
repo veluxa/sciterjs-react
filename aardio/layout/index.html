@@ -5,10 +5,6 @@
     <meta charset="utf-8">
     <script>
         self = globalThis; window.platform = "sciter";
-        function getComputedStyle(el) {
-            return window.getComputedStyle ? window.getComputedStyle(el) : el.currentStyle;
-        }
-        window.getComputedStyle = getComputedStyle;
     </script>
     <script type="module">
         import * as sys from "@sys";

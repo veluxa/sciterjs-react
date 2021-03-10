@@ -12,6 +12,7 @@ use react to write Sciterjs programs that support browser and desktop;
 | className | ✔ | The browser supports className, sciter does not support **className** please use **class**  |
 | class component | ✔ | lifecycle,state |
 | function component | ✔ | hook |
+| router | ✔ | Please use [preact-router](https://www.npmjs.com/package/preact-router) |
 
 ---
 
@@ -43,20 +44,20 @@ build:
 
 1、web
 ```sh
-npm run buildwww
+npm run build:www
 ```
 
 2、sciterjs
 ```sh
-npm run buildscapp
+npm run build:win
 ```
 
 3、aardio
 ```sh
-npm run buildaardio
+npm run build:aardio
 ```
 
 inspector:
 ```sh
-npm run inspector
+npm run inspector:win
 ```

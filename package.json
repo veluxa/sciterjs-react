@@ -5,13 +5,14 @@
   "git repository": "https://github.com/veluxa/sciterjs-react",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack-dev-server --config webpack.dev.conf.js --hot --inline",
-    "buildwww": "webpack --config webpack.prod.conf.js",
-    "scapp": "%cd%/bin/windows/scapp.exe ./dist/index.html",
-    "macScapp": "./bin/macosx/scapp.exe ./dist/index.html",
-    "buildscapp": "SET PLATFORM=sciter && webpack --config webpack.prod.conf.js && npm run scapp",
-    "buildaardio": "SET PLATFORM=sciter && webpack --config webpack.aardio.prod.conf.js",
-    "inspector": "%cd%/bin/windows/inspector.exe"
+    "dev": "webpack-dev-server --config ./config/dev.js --hot --inline",
+    "build:www": "webpack --config ./config/prod.js",
+    "build:win": "SET PLATFORM=sciter && webpack --config ./config/prod.js && npm run scapp:win",
+    "build:mac": "set PLATFORM=sciter && webpack --config ./config/prod.js && npm run scapp:mac",
+    "build:aardio": "SET PLATFORM=sciter && webpack --config ./config/aardio.js",
+    "scapp:win": "%cd%/bin/windows/scapp.exe ./dist/index.html",
+    "scapp:mac": "./bin/macosx/scapp.exe ./dist/index.html",
+    "inspector:win": "%cd%/bin/windows/inspector.exe"
   },
   "keywords": [
     "sciterjs"

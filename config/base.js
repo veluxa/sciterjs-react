@@ -1,15 +1,11 @@
 'use strict';
 
-const fs = require('fs');
 const path = require("path");
 const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
-const appDirectory = fs.realpathSync(process.cwd());
-const resolveApp = relativePath => path.resolve(appDirectory, relativePath);
-const appSrc = resolveApp('src')
 const platform = process.env.PLATFORM
 
 module.exports = {
@@ -17,10 +13,7 @@ module.exports = {
         rules: [
             {
                 test: /\.(js|mjs|jsx|ts|tsx)$/,
-                include: [
-                    appSrc
-                ],
-                // exclude: /node_modules/,
+                include: /src/,
                 use: 'babel-loader'
             },
             {
@@ -31,10 +24,10 @@ module.exports = {
                 test: /(\.css|\.less)$/,
                 exclude: /node_modules/,
                 use: ExtractTextPlugin.extract({
-                    fallback: {// 这里表示不提取的时候，使用什么样的配置来处理css
+                    fallback: {
                         loader: 'style-loader',
                         options: {
-                            singleton: true // 表示将页面上的所有css都放到一个style标签内
+                            singleton: true
                         }
                     },
                     use: [
@@ -72,18 +65,19 @@ module.exports = {
         ]
     },
     resolve: {
-        modules: [path.resolve(__dirname, 'src'), 'node_modules'],
+        modules: [path.resolve(__dirname, '../src'), 'node_modules'],
         extensions: [".jsx", ".tsx", ".ts", ".js"],
         alias: {
             'react': "sciterjs-react",
-            'react-dom': "sciterjs-react"
+            'react-dom': "sciterjs-react",
+            'preact': "sciterjs-react/lib/preact",
         }
     },
     resolveLoader: {
-        modules: [path.join(__dirname, './loaders'), 'node_modules']
+        modules: [path.join(__dirname, '../loaders'), 'node_modules']
     },
     output: {
-        path: path.resolve(__dirname, "dist"),
+        path: path.resolve(__dirname, "../dist"),
         filename: "bundle.js",
         publicPath: '',
     },
