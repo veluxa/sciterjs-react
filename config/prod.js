@@ -4,7 +4,10 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const baseWebpackConfig = require('./base');
 
 module.exports = merge(baseWebpackConfig, {
-    entry: "./src/index.jsx",
+    entry: {
+        utils: ["./src/utils/EventSource.js"],
+        main: "./src/index.jsx",
+    },
     mode: "production",
     // devtool: 'cheap-module-source-map', // source-map
     plugins: [

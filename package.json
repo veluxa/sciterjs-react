@@ -5,14 +5,16 @@
   "git repository": "https://github.com/veluxa/sciterjs-react",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack-dev-server --config ./config/dev.js --hot --inline",
+    "dev:www": "webpack-dev-server --config ./config/dev.js --hot --inline",
+    "dev:scapp": "node ./config/dev.scapp.js",
     "build:www": "webpack --config ./config/prod.js",
     "build:win": "SET PLATFORM=sciter && webpack --config ./config/prod.js && npm run scapp:win",
     "build:mac": "set PLATFORM=sciter && webpack --config ./config/prod.js && npm run scapp:mac",
     "build:aardio": "SET PLATFORM=sciter && webpack --config ./config/aardio.js",
     "scapp:win": "%cd%/bin/windows/scapp.exe ./dist/index.html",
     "scapp:mac": "./bin/macosx/scapp.exe ./dist/index.html",
-    "inspector:win": "%cd%/bin/windows/inspector.exe"
+    "inspector:win": "%cd%/bin/windows/inspector.exe",
+    "preview:win": "%cd%/bin/windows/SciterJsBrowser.exe http://localhost:9000/"
   },
   "keywords": [
     "sciterjs"
@@ -48,6 +50,7 @@
     "babel-plugin-import": "^1.13.3",
     "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^5.0.1",
+    "express": "^4.17.1",
     "extract-text-webpack-plugin": "^3.0.2",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^4.5.0",
@@ -59,13 +62,17 @@
     "postcss-loader": "^4.1.0",
     "precss": "^4.0.0",
     "sass-loader": "^10.1.0",
+    "sciterjs-hot-middleware": "^1.0.0",
     "style-loader": "^2.0.0",
     "terser-webpack-plugin": "^5.0.3",
     "url-loader": "^4.1.1",
     "webpack": "^5.11.0",
     "webpack-cli": "^3.3.12",
+    "webpack-dev-middleware": "^4.1.0",
     "webpack-dev-server": "^3.11.0",
-    "webpack-merge": "^5.7.3"
+    "webpack-hot-middleware": "^2.25.0",
+    "webpack-merge": "^5.7.3",
+    "ws": "^7.4.4"
   },
   "dependencies": {
     "sciterjs-react": "^1.0.3"

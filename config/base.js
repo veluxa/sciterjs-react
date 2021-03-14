@@ -78,25 +78,25 @@ module.exports = {
     },
     output: {
         path: path.resolve(__dirname, "../dist"),
-        filename: "bundle.js",
-        publicPath: '',
+        filename: "[name].js",
+        publicPath: !platform ? '/' : '',
     },
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
         new HtmlWebpackPlugin({
-            title: 'ide',
+            title: 'sciterjs-react',
             filename: "index.html",
             template: platform ? "./public/index.sciter.html" : "./public/index.html",
             showErrors: true,
             inject: true,
             minify: {
                 removeComments: false,
-                collapseWhitespace: false,
+                collapseWhitespace: true,
                 removeAttributeQuotes: false
                 // more options:
                 // https://github.com/kangax/html-minifier#options-quick-reference
             },
-            chunks: ["main", "common", 'index']
+            chunks: ["main"]
         }),
         new MiniCssExtractPlugin({
             filename: '[name]-[contenthash].css'

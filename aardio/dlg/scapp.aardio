@@ -1,0 +1,56 @@
+import win.ui;
+/*DSG{{*/
+var winform = win.form(text="aardio form";right=759;bottom=469)
+winform.add()
+/*}}*/
+
+import web.sciter;
+import web.sciter.debug;
+
+var wbSciter = web.sciter( winform );
+wbSciter.go("\layout\index.html");
+
+namespace web.sciter.behavior.customEvent { 
+//自定义behavior
+    
+    reload = function(ltOwner){
+    }
+
+	testJs = function(ltOwner,...){ 
+		import console
+		console.log("behavior里的函数 testJs 被调用了");
+		console.log("自定义函数接收到的第一个参数总是节点自身")
+		console.log("然后才是其他参数",...)
+		
+		//aardio里调用behavior自定义函数的方法是一样的,提供一模一样的xcall函数
+		ltOwner.xcall("testJs2",...)
+	}
+	
+	testJs2 = function(ltOwner,...){
+		console.log("behavior里的函数 testJs2 被调用了",...)
+		console.log("自定义函数接收到的第一个参数总是节点自身")
+		console.log(ltOwner.outerHTML)
+	}
+
+}
+
+if(_STUDIO_INVOKED){
+	wbSciter.attachEventHandler( web.sciter.debug );
+}
+
+
+winform.getTime = function(id,event){
+	var time = wbSciter.documentElement.querySelector("#clock").innerText
+	winform.msgbox(time)
+}
+
+winform.callJs = function(id,event){
+	var app = wbSciter.call("jsFunction")
+	winform.msgbox(app)
+}
+
+
+winform.show();
+
+win.loopMessage();
+return winform;

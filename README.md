@@ -13,6 +13,7 @@ use react to write Sciterjs programs that support browser and desktop;
 | class component | ✔ | lifecycle,state |
 | function component | ✔ | hook |
 | router | ✔ | Please use [preact-router](https://www.npmjs.com/package/preact-router) |
+| hot reload | ✔ | Support browser and window desktop |
 
 ---
 

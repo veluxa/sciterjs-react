@@ -7,4 +7,7 @@
 		<file name="index.html" path="layout\index.html" comment="layout\index.html"/>
 		<file name="main-e161f5950e461ae2a519.css" path="layout\main-e161f5950e461ae2a519.css" comment="layout\main-e161f5950e461ae2a519.css"/>
 	</folder>
+	<folder name="窗口" path="dlg" embed="true" comment="目录" local="false" ignored="false">
+		<file name="scapp.aardio" path="dlg\scapp.aardio" comment="dlg\scapp.aardio"/>
+	</folder>
 </project>
