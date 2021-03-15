@@ -45,13 +45,12 @@ app.listen(port, () => {
     console.log(
         'Launching app... http://localhost:' + port + '\n'
     );
+
+    // SciterJsBrowser.exe [path] [width] [height]
+
     exec(`${path.resolve(__dirname, "../bin/windows/SciterJsBrowser.exe")}`,["http://localhost:9000/"], function (err, stdout, stderr) {
         if (err) {
             console.error(err);
         }
     })
 });
-
-// Register app and middleware. Required for better
-// performance when running from play.js
-try { pjs.register(app, middleware); } catch (error) { }
