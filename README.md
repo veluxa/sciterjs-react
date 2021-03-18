@@ -37,9 +37,17 @@ npm i
 ```
 
 run:
+
+1.web
 ```sh
-npm run dev
+npm run dev:www
 ```
+
+2.web & scapp
+```sh
+npm run dev:scapp
+```
+
 
 build:
 

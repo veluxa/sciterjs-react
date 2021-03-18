@@ -10,11 +10,6 @@ const compiler = webpack(config);
 const middleware = webpackMiddleware(compiler, {
   publicPath: config.output.publicPath,
   serverSideRender: false,
-  watchOptions: {
-    // Due to iOS devices memory constraints
-    // disabling file watching is recommended 
-    ignored: /.*/
-  }
 });
 app.use(middleware);
 app.get('/', (req, res) => {
