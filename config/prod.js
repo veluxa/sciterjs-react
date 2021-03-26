@@ -1,14 +1,19 @@
 const webpack = require('webpack');
 const { merge } = require('webpack-merge');
+const path = require("path");
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const baseWebpackConfig = require('./base');
 
 module.exports = merge(baseWebpackConfig, {
     entry: {
-        utils: ["./src/utils/EventSource.js"],
         main: "./src/index.jsx",
     },
     mode: "production",
+    output: {
+        path: path.resolve(__dirname, "../dist"),
+        filename: "[name].js",
+        publicPath: './',
+    },
     // devtool: 'cheap-module-source-map', // source-map
     plugins: [
         new CleanWebpackPlugin(),
