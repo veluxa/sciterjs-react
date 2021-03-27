@@ -8,7 +8,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = env => {
 
-    const OS = env || { BUILD: "web" }
+    const OS = env || { BUILD: "web", MODE: "" }
     const htmlPath = (html) => path.resolve(__dirname, "../public/", html)
 
     return {
@@ -89,7 +89,7 @@ module.exports = env => {
             new HtmlWebpackPlugin({
                 title: 'sciterjs-react',
                 filename: "index.html",
-                template: OS.BUILD === "app" ? htmlPath("index.sciter.html") : htmlPath("index.html"),
+                template: OS.BUILD === "app" ? htmlPath(OS.MODE === "prod" ? "sciter.html" : "dev.sciter.html") : htmlPath("index.html"),
                 favicon: "./public/favicon.ico",
                 showErrors: true,
                 inject: true,

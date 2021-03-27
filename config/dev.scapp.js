@@ -9,7 +9,7 @@ const os = require('os')
 
 const app = express();
 const port = process.env['REACT_APP_PORT'] || 9000;
-const config = require('./base.js')();
+const config = require('./base.js')({ BUILD: "app" });
 const compiler = webpack(merge(config, {
     mode: 'development',
     entry: {

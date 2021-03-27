@@ -32,9 +32,7 @@ const App = () => {
             href="https://preactjs.com/"
             onClick={
               e => {
-                if (window.platform) {
-                  window.env.launch("https://preactjs.com/")
-                }
+                window.env && window.env.launch("https://preactjs.com/")
               }
             }
           >
@@ -46,9 +44,7 @@ const App = () => {
             href="http://www.aardio.com/"
             onClick={
               e => {
-                if (window.platform) {
-                  e.currentTarget.xcall("testJs", "hello", "aardio")
-                }
+                window.env && e.currentTarget.xcall("testJs", "hello", "aardio")
               }
             }
           >
@@ -60,9 +56,7 @@ const App = () => {
             href="https://github.com/veluxa/sciterjs-react"
             onClick={
               e => {
-                if (window.platform) {
-                  window.env.launch("https://github.com/veluxa/sciterjs-react")
-                }
+                window.env && window.env.launch("https://github.com/veluxa/sciterjs-react")
               }
             }
           >

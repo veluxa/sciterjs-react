@@ -3,10 +3,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <script>
-        self = globalThis; window.platform = "sciter";
-    </script>
-
+    <script>self = globalThis;</script>
     <script type="module">
         import * as sys from "@sys";
         import * as env from "@env";
@@ -25,7 +22,7 @@
 
                 if (global.ws) {
                     this.websocket = global.ws
-                }else{
+                } else {
                     this.websocket = new WebSocket(url)
                     global.ws = this.websocket
                 }
