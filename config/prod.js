@@ -4,7 +4,7 @@ const path = require("path");
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const baseWebpackConfig = require('./base');
 
-module.exports = merge(baseWebpackConfig, {
+module.exports = env => merge(baseWebpackConfig(env), {
     entry: {
         main: "./src/index.jsx",
     },

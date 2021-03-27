@@ -1,12 +1,11 @@
-
-const baseWebpackConfig = require('./base');
-const webpack = require('webpack');
 const { merge } = require('webpack-merge');
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
+const baseWebpackConfig = require('./base');
 const path = require("path");
 
 const serverPort = 9000;
 
-module.exports = merge(baseWebpackConfig, {
+module.exports = merge(baseWebpackConfig(), {
     mode: 'development',
     entry: {
         main: [
@@ -23,4 +22,9 @@ module.exports = merge(baseWebpackConfig, {
         open: true,
         hot: true
     },
+    plugins: [
+        new FaviconsWebpackPlugin({
+            logo: "./public/favicon.ico"
+        })
+    ]
 })

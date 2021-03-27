@@ -10,7 +10,7 @@ const App = () => {
 
   return (
     <div class="app">
-      <header class="app-header">
+      <div class="app-content">
         <div class="flex c-align">
           <img src={reactLogo} class="app-logo" alt="logo" />
           <img src={sciterLogo} class="app-logo" alt="logo" />
@@ -43,7 +43,7 @@ const App = () => {
           <a
             style={{ behavior: "customEvent clickable" }} // for sciterjs
             class="app-link aardio-link"
-            href="http://bbs.aardio.com/"
+            href="http://www.aardio.com/"
             onClick={
               e => {
                 if (window.platform) {
@@ -69,7 +69,7 @@ const App = () => {
             github
           </a>
         </div>
-      </header>
+      </div>
     </div>
   );
 }

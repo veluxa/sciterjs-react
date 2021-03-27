@@ -26,9 +26,11 @@ use react to write Sciterjs programs that support browser and desktop;
 | height: 100oo | => | height: 100%% |
 
 
-2. If the element has a clickable event, append behavior: "clickable" to the element. See app.jsx
+2. If the element has a clickable event, append behavior: "**clickable**" to the element. See app.jsx
 
 3. **buildaardio 编译后请在aardio资源文件上右键选择 "同步本地目录"，不然新编译的资源在aardio中运行不会生效**
+
+4. Please grant scapp execute permission on macos, otherwise it will not work properly.
 
 ---
 install
@@ -38,12 +40,12 @@ npm i
 
 run:
 
-1.web
+1、web
 ```sh
 npm run dev:www
 ```
 
-2.web & scapp
+2、web & scapp
 ```sh
 npm run dev:scapp
 ```
@@ -58,7 +60,7 @@ npm run build:www
 
 2、sciterjs
 ```sh
-npm run build:win
+npm run build:scapp
 ```
 
 3、aardio
@@ -68,5 +70,5 @@ npm run build:aardio
 
 inspector:
 ```sh
-npm run inspector:win
+npm run inspector
 ```
