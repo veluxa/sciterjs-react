@@ -6,6 +6,7 @@ const { merge } = require('webpack-merge');
 const webpackMiddleware = require('webpack-dev-middleware');
 const webpackSciterjsHotMiddleware = require('sciterjs-hot-middleware')
 const os = require('os')
+const { setup } = require("../bin")
 
 const app = express();
 const port = process.env['REACT_APP_PORT'] || 9000;
@@ -47,12 +48,16 @@ app.listen(port, () => {
 
     const platform = os.platform()
     if (platform === "win32") {
-        // SciterJsBrowser.exe [path] [width] [height]
-        exec(`${path.resolve(__dirname, "../bin/windows/SciterJsBrowser.exe")}`, ["http://localhost:9000/"], function (err, stdout, stderr) {
-            if (err) {
-                console.error(err);
-            }
-        })
+
+        setup().then(res => {
+            // SciterJsBrowser.exe [path] [width] [height]
+            exec(`${path.resolve(__dirname, "../bin/windows/SciterJsBrowser.exe")}`, ["http://localhost:9000/"], function (err, stdout, stderr) {
+                if (err) {
+                    console.error(err);
+                }
+            })
+        }).catch(err => console.error(err))
+
     } else {
         console.error("!!! The current dev:scapp command only supports win32");
     }
