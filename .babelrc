@@ -18,6 +18,7 @@
             {
                 "legacy": true
             }
-        ]
+        ],
+        ["import", { "libraryName": "antd", "style": true }]
     ]
 }

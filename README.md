@@ -6,13 +6,14 @@ use react to write Sciterjs programs that support browser and desktop;
 ---
 **Features**:
 
-> [x] style
->
-> [x] className
->
-> [x] class component (Lifecycle,State)
->
-> [ ] function component (hook is not currently available)
+| property | support | note |
+| :-- | :--: | :-- |
+| style | ✔ |  |
+| className | ✔ | The browser supports className, sciter does not support **className** please use **class**  |
+| class component | ✔ | lifecycle,state |
+| function component | ✔ | hook |
+| router | ✔ | Please use [preact-router](https://www.npmjs.com/package/preact-router) |
+| hot reload | ✔ | Support browser and window desktop |
 
 ---
 
@@ -25,9 +26,11 @@ use react to write Sciterjs programs that support browser and desktop;
 | height: 100oo | => | height: 100%% |
 
 
-2. If the element has a clickable event, append behavior: "clickable" to the element. See app.jsx
+2. If the element has a clickable event, append behavior: "**clickable**" to the element. See app.jsx
 
 3. **buildaardio 编译后请在aardio资源文件上右键选择 "同步本地目录"，不然新编译的资源在aardio中运行不会生效**
+
+4. Please grant scapp execute permission on macos, otherwise it will not work properly.
 
 ---
 install
@@ -36,25 +39,33 @@ npm i
 ```
 
 run:
+
+1、web
 ```sh
-npm run dev
+npm run dev:www
 ```
+
+2、web & scapp
+```sh
+npm run dev:scapp
+```
+
 
 build:
 
 1、web
 ```sh
-npm run buildwww
+npm run build:www
 ```
 
 2、sciterjs
 ```sh
-npm run buildscapp
+npm run build:scapp
 ```
 
 3、aardio
 ```sh
-npm run buildaardio
+npm run build:aardio
 ```
 
 inspector:

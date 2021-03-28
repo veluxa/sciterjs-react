@@ -1,45 +1,50 @@
-import React from "sciterjs-react";
+import React, { useState } from "sciterjs-react";
 import reactLogo from './logo.svg';
 import sciterLogo from "./logo.png";
 import Clock from "./component/clock";
 import './App.scss';
 
-function App() {
+const App = () => {
+
+  let [count, SetCount] = useState(0)
+
   return (
-    <div className="app">
-      <header className="app-header">
-        <div className="flex c-align">
-          <img src={reactLogo} className="app-logo" alt="logo" />
-          <img src={sciterLogo} className="app-logo" alt="logo" />
+    <div class="app">
+      <div class="app-content">
+        <div class="flex c-align">
+          <img src={reactLogo} class="app-logo" alt="logo" />
+          <img src={sciterLogo} class="app-logo" alt="logo" />
         </div>
         <Clock id="clock" />
+        <div>
+          <span>Hook：</span>
+          <button onClick={e => SetCount(count -= 1)}>-</button>
+          {count}
+          <button onClick={e => SetCount(count += 1)}>+</button>
+        </div>
         <p>
           Edit <code>src/App.jsx</code> and save to reload browser.
         </p>
-        <div className="flex c-align">
+        <div class="flex c-align">
           <a
             style={{ behavior: "clickable" }} // for sciterjs
-            className="app-link"
-            href="https://reactjs.org"
+            class="app-link"
+            href="https://preactjs.com/"
             onClick={
               e => {
-                if (window.platform) {
-                  window.env.launch("https://reactjs.org")
-                }
+                window.env && window.env.launch("https://preactjs.com/")
               }
             }
           >
-            Learn React
+            Learn Preact
           </a>
           <a
             style={{ behavior: "customEvent clickable" }} // for sciterjs
-            className="app-link aardio-link"
-            href="http://bbs.aardio.com/"
+            class="app-link aardio-link"
+            href="http://www.aardio.com/"
             onClick={
               e => {
-                if (window.platform) {
-                  e.currentTarget.xcall("testJs", "hello", "aardio")
-                }
+                window.env && e.currentTarget.xcall("testJs", "hello", "aardio")
               }
             }
           >
@@ -47,20 +52,18 @@ function App() {
           </a>
           <a
             style={{ behavior: "clickable" }}
-            className="app-link"
+            class="app-link"
             href="https://github.com/veluxa/sciterjs-react"
             onClick={
               e => {
-                if (window.platform) {
-                  window.env.launch("https://github.com/veluxa/sciterjs-react")
-                }
+                window.env && window.env.launch("https://github.com/veluxa/sciterjs-react")
               }
             }
           >
             github
           </a>
         </div>
-      </header>
+      </div>
     </div>
   );
 }

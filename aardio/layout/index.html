@@ -1,20 +1,153 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-    <meta charset="utf-8">
-    <script> self = globalThis; window.platform = "sciter" </script>
-    <script type="module">
-        import * as sys from "@sys";
+<!DOCTYPE html><html><head><meta charset="utf-8"><script>self = globalThis;</script><script type="module">import * as sys from "@sys";
         import * as env from "@env";
         import * as sciter from "@sciter";
+        window.env = env;</script><script>window.ws = null;
 
-        window.env = env;
-    </script>
-<link href="main-e161f5950e461ae2a519.css" rel="stylesheet"></head>
+        (function (global) {
+            var WSEvent = function (url) {
+                if (!url || typeof url != 'string') {
+                    throw new SyntaxError('Not enough arguments');
+                }
 
-<body>
-    <div id="root"></div>
-<script src="bundle.js"></script></body>
+                if (global.ws) {
+                    this.websocket = global.ws
+                } else {
+                    this.websocket = new WebSocket(url)
+                    global.ws = this.websocket
+                }
 
-</html>
+                this.websocket.onopen = this.onOpen.bind(this)
+                this.websocket.onclose = this.onClose.bind(this);
+                this.websocket.onmessage = this.onMessage.bind(this);
+                this.websocket.onerror = this.onError.bind(this);
+            }
+
+            WSEvent.prototype = {
+                CONNECTING: 0,
+                OPEN: 1,
+                CLOSED: -1,
+                loggingPrefix: "WS",
+                websocket: null,
+                readyState: 0,
+                cache: '',
+                connected: false,
+                loggingEnabled: true,
+                lastEventId: null,
+                onOpen: function (evt) {
+                    this.readyState = this.OPEN;
+                    this.dispatchWSEvent('open', { type: 'open' });
+                },
+
+                onClose: function (evt) {
+                    this.readyState = this.close;
+                    this.log("DISCONNECTED")
+                },
+
+                onMessage: function (evt) {
+                    this.log("data")
+                    chunk = this.cache + evt.data;
+                    var events = chunk.split('\n\n');
+                    var i, j, eventType, datas, line, retry;
+                    for (i = 0; i < (events.length - 1); i++) {
+
+                        eventType = 'message';
+                        datas = [];
+                        parts = events[i].split('\n');
+
+                        for (j = 0; j < parts.length; j++) {
+
+                            line = this.trimWhiteSpace(parts[j]);
+
+                            if (line.indexOf('event') == 0) {
+                                eventType = line.replace(/event:?\s*/, '');
+                            }
+                            else if (line.indexOf('retry') == 0) {
+
+                                retry = parseInt(line.replace(/retry:?\s*/, ''));
+                                if (!isNaN(retry)) {
+                                    this.interval = retry;
+                                }
+                            }
+                            else if (line.indexOf('data') == 0) {
+                                datas.push(line.replace(/data:?\s*/, ''));
+                            }
+                            else if (line.indexOf('id:') == 0) {
+                                this.lastEventId = line.replace(/id:?\s*/, '');
+                            }
+                            else if (line.indexOf('id') == 0) { // this resets the id
+                                this.lastEventId = null;
+                            }
+                        }
+
+                        if (datas.length) {
+                            // dispatch a new event
+                            let origin = window.location ? window.location.origin : null
+                            var event = new MessageEvent(eventType, datas.join('\n'), origin, this.lastEventId);
+                            this.dispatchWSEvent(eventType, event);
+                        }
+                    }
+
+                    this.cache = events[events.length - 1];
+                },
+
+                onError: function (evt) {
+                    this.log('onError: ' + evt.data)
+                },
+                log: function (message) {
+                    if (this.loggingEnabled) {
+                        console.log("[" + this.loggingPrefix + "]:" + message)
+                    }
+                },
+                close: function () {
+                    this.readyState = this.CLOSED;
+                },
+                dispatchWSEvent: function (type, event) {
+                    var handlers = this['_' + type + 'Handlers'];
+
+                    if (handlers) {
+
+                        for (var i = 0; i < handlers.length; i++) {
+                            handlers[i].call(this, event);
+                        }
+                    }
+
+                    if (this['on' + type]) {
+                        this['on' + type].call(this, event);
+                    }
+                },
+                addEventListener: function (type, handler) {
+                    if (!this['_' + type + 'Handlers']) {
+                        this['_' + type + 'Handlers'] = [];
+                    }
+
+                    this['_' + type + 'Handlers'].push(handler);
+                },
+                removeEventListener: function (type, handler) {
+                    var handlers = this['_' + type + 'Handlers'];
+                    if (!handlers) {
+                        return;
+                    }
+                    for (var i = handlers.length - 1; i >= 0; --i) {
+                        if (handlers[i] === handler) {
+                            handlers.splice(i, 1);
+                            break;
+                        }
+                    }
+                },
+                trimWhiteSpace: function (str) {
+                    var reTrim = /^(\s|\u00A0)+|(\s|\u00A0)+$/g;
+                    return str.replace(reTrim, '');
+                },
+            }
+            function MessageEvent(type, data, origin, lastEventId) {
+
+                this.bubbles = false;
+                this.cancelBubble = false;
+                this.cancelable = false;
+                this.data = data || null;
+                this.origin = origin || '';
+                this.lastEventId = lastEventId || '';
+                this.type = type || 'message';
+            }
+            window.WSEvent = WSEvent
+        }(window))</script><link rel="icon" href="favicon.ico"><script defer="defer" src="bundle.js"></script><link href="main-3029a2d7c79e7fb2ed2a.css" rel="stylesheet"></head><body style="behavior: customEvent;"><div id="root"></div></body></html>
