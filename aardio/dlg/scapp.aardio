@@ -10,6 +10,13 @@ import web.sciter.debug;
 var wbSciter = web.sciter( winform );
 wbSciter.go("\layout\index.html");
 
+wbSciter.external = {
+	hi = function(str) {
+		import console
+		console.log(str);
+	}
+}
+
 namespace web.sciter.behavior.customEvent { 
 //自定义behavior
     

@@ -76,6 +76,7 @@
     "ws": "^7.4.4"
   },
   "dependencies": {
+    "preact-router": "^3.2.1",
     "sciterjs-react": "^1.0.3"
   }
 }

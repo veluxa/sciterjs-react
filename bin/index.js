@@ -22,7 +22,25 @@ const bin = {
 
 
 const downDir = path.resolve(__dirname, getOSDir(dir[platform]))
-const binList = fs.readdirSync(downDir)
+
+async function verifyFile(file) {
+    return new Promise(function (resolve, reject) {
+        fs.stat(path.join(downDir, file), function (err, stat) {
+            if (stat && stat.size) {
+                resolve(file)
+            } else {
+                resolve(null);
+            }
+        })
+    })
+}
+
+async function getBinFiles() {
+    const files = fs.readdirSync(downDir)
+    return Promise.all(files.map(async function (file) {
+        return await verifyFile(file)
+    }))
+}
 
 function getOSDir(str) {
     return str.substring(0, str.indexOf('/'))
@@ -41,11 +59,12 @@ function download(url, path, file) {
             console.log(`${file} finished`)
             return res(file)
         }).on('error', function (err) { rej(err) })
+
         request({ url }).pipe(write)
     })
 }
 
-function setup() {
+async function setup() {
 
     let times = 0
     function notice() {
@@ -56,6 +75,8 @@ function setup() {
         `);
     }
 
+    const binList = await getBinFiles()
+
     let task = bin[platform].map(function (b) {
         if (!binList.includes(b)) {
             !times && notice()
@@ -65,6 +86,7 @@ function setup() {
         }
         return true
     })
+
     return Promise.all(task)
 }
 

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<project ver="10" name="sciterjs" libEmbed="true" icon="" CompanyName="单位名称" FileDescription="sciterjs" LegalCopyright="Copyright (C) 单位名称 2021" ProductName="sciterjs" InternalName="sciterjs" FileVersion="0.0.0.1" ProductVersion="0.0.0.1" publishDir="/dist/" ui="win" output="sciterjs.exe" dstrip="false">
+<project ver="10" name="sciterjs" libEmbed="true" icon="" CompanyName="单位名称" FileDescription="sciterjs" LegalCopyright="Copyright (C) 单位名称 2021" ProductName="sciterjs" InternalName="sciterjs" FileVersion="0.0.0.02" ProductVersion="0.0.0.02" publishDir="/dist/" ui="win" output="sciterjs.exe" dstrip="false">
 	<file name="main.aardio" path="main.aardio"/>
-	<folder name="资源文件(web.layout)" path="layout" comment="" embed="true" local="false" ignored="false">
+	<folder name="资源文件(web.layout)" path="layout" comment="" embed="true" local="true" ignored="false">
 		<file name="6ce24c58023cc2f8fd88fe9d219db6c6.svg" path="layout\6ce24c58023cc2f8fd88fe9d219db6c6.svg" comment="layout\6ce24c58023cc2f8fd88fe9d219db6c6.svg"/>
 		<file name="bundle.js" path="layout\bundle.js" comment="layout\bundle.js"/>
 		<file name="favicon.ico" path="layout\favicon.ico" comment="layout\favicon.ico"/>

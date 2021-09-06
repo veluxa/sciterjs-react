@@ -1,0 +1,4 @@
+.app{text-align:center;height:100vh;background-color:#282c34;display:flex;flex-direction:column;justify-content:center;align-items:center;flow:vertical;horizontal-align:center}#nav-links a{padding:0 10px}.app-logo{height:120px;pointer-events:none}.app-content{margin-top: *;margin-bottom: *;font-size:10pt;color:white}.app-link{color:#61dafb;margin-right:10px}
+
+html,body{background-color:white;padding:0;margin:0;width:100%;height:100%}.flex{flow:horizontal;display:flex}.flex-v{flow:vertical;display:flex;flex-direction:column}.c-align{justify-content:center;horizontal-align:center}
+
