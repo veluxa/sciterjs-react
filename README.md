@@ -1,4 +1,8 @@
+**DEMO**(win7/win8/win10)
 
+[download demo](https://github.com/veluxa/sciterjs-react/raw/master/aardio/dist/sciterjs.exe)
+
+---
 use react to write Sciterjs programs that support browser and desktop;
 
 ![screen](/screen.png)
