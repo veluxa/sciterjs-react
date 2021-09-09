@@ -1,7 +1,7 @@
 
 const external = {
     call: function (func, ...args) {
-        return Window.this.xcall("$javascriptExternal")[func](args);
+        return (Window as any).this.xcall("$javascriptExternal")[func](args);
     },
 
     post: function (func, ...args) {

@@ -8,6 +8,8 @@ use react to write Sciterjs programs that support browser and desktop;
 
 | property | support | note |
 | :-- | :--: | :-- |
+| js、jsx | ✔ | |
+| ts、tsx | ✔ | |
 | style | ✔ |  |
 | className | ✔ | The browser supports className, sciter does not support **className** please use **class**  |
 | class component | ✔ | lifecycle,state |
@@ -26,7 +28,7 @@ use react to write Sciterjs programs that support browser and desktop;
 | height: 100oo | => | height: 100%% |
 
 
-2. If the element has a clickable event, append behavior: "**clickable**" to the element. See app.jsx
+2. If the element has a clickable event, append behavior: "**clickable**" to the element. See app.tsx
 
 3. ~~buildaardio 编译后请在aardio资源文件上右键选择 "同步本地目录"，不然新编译的资源在aardio中运行不会生效~~ 在aardio工程里项目资源管理器中选中 layout 目录，在右侧边属性栏中选择 **本地构建**
 

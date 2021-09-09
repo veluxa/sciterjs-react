@@ -16,7 +16,7 @@ const compiler = webpack(merge(config, {
     entry: {
         main: [
             "sciterjs-hot-middleware/client?timeout=20000&reload=true",
-            "/src/index.jsx"
+            "/src/index.tsx"
         ]
     },
 }));

@@ -4,7 +4,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const baseWebpackConfig = require('./base');
 
 module.exports = env => merge(baseWebpackConfig(env), {
-    entry: "./src/index.jsx",
+    entry: "./src/index.tsx",
     mode: "production",
     // devtool: 'cheap-module-source-map', // source-map
     output: {

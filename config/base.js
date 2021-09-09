@@ -15,9 +15,29 @@ module.exports = env => {
         module: {
             rules: [
                 {
-                    test: /\.(js|mjs|jsx|ts|tsx)$/,
-                    include: /src/,
-                    use: 'babel-loader'
+                    test: /\.(js|mjs|jsx)$/,
+                    exclude: /node_modules/,
+                    use: [{
+                        loader: 'babel-loader',
+                        options: {
+                            presets: [
+                                "@babel/preset-react"
+                            ]
+                        }
+                    }]
+                },
+                {
+                    test: /\.(ts|tsx)$/,
+                    exclude: /node_modules/,
+                    use: [{
+                        loader: 'babel-loader',
+                        options: {
+                            presets: [
+                                "@babel/preset-react",
+                                "@babel/preset-typescript"
+                            ]
+                        }
+                    }]
                 },
                 {
                     test: /\.(png|jpg|jpeg|gif|woff|woff2)$/,

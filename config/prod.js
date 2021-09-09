@@ -7,7 +7,7 @@ const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 
 module.exports = env => merge(baseWebpackConfig({ ...env, MODE: "prod" }), {
     entry: {
-        main: "./src/index.jsx",
+        main: "./src/index.tsx",
     },
     mode: "production",
     optimization: {

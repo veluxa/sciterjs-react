@@ -3,7 +3,7 @@ import { route } from 'preact-router';
 
 let currentUrl = "/"
 
-const Link = (props) => {
+const Link = (props: { href: any; children?: any; }) => {
 
     const onLinkClick = (e) => {
         e.stopPropagation()

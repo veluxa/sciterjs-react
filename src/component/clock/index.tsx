@@ -1,7 +1,15 @@
 import React, { Component } from "sciterjs-react";
 
+interface IProps {
+    id: string;
+}
+
 class Clock extends Component {
-    constructor(props = {}) {
+
+    timer: NodeJS.Timer;
+    props: IProps;
+
+    constructor(props: IProps) {
         super(props);
         this.state = { time: new Date() };
     }

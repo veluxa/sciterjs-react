@@ -10,7 +10,7 @@ module.exports = merge(baseWebpackConfig(), {
     entry: {
         main: [
             `webpack-dev-server/client?http://localhost:${serverPort}`,
-            "/src/index.jsx"
+            "/src/index.tsx"
         ],
     },
     devtool: 'cheap-module-source-map',
