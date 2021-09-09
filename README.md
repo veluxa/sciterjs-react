@@ -8,7 +8,7 @@ use react to write Sciterjs programs that support browser and desktop;
 ![screen](/screen.png)
 
 ---
-**Features**:
+**1.Features**:
 
 | property | support | note |
 | :-- | :--: | :-- |
@@ -23,7 +23,54 @@ use react to write Sciterjs programs that support browser and desktop;
 
 ---
 
-**Notice**:
+**2.How to use**
+
+***2.1 Install***
+```shell
+cd your_prodjects_directory
+git clone https://github.com/veluxa/sciterjs-react.git
+cd sciterjs-react
+npm install
+```
+
+***2.2 Start:***
+
+1、web
+```sh
+npm run dev:www
+```
+
+2、web & scapp
+```sh
+npm run dev:scapp
+```
+
+***2.2 Build:***
+
+1、web
+```sh
+npm run build:www
+```
+
+2、sciterjs
+```sh
+npm run build:scapp
+```
+
+3、aardio
+```sh
+npm run build:aardio
+```
+
+---
+***inspector***:
+```sh
+npm run inspector
+```
+
+---
+
+**3.Notice**:
 1. When writing css, use x instead of * and o instead of %. For example:
 
 | source  | webpack | result |
@@ -41,42 +88,3 @@ use react to write Sciterjs programs that support browser and desktop;
 4. Please grant scapp execute permission on macos, otherwise it will not work properly.
 
 ---
-install
-```sh
-npm i
-```
-
-run:
-
-1、web
-```sh
-npm run dev:www
-```
-
-2、web & scapp
-```sh
-npm run dev:scapp
-```
-
-
-build:
-
-1、web
-```sh
-npm run build:www
-```
-
-2、sciterjs
-```sh
-npm run build:scapp
-```
-
-3、aardio
-```sh
-npm run build:aardio
-```
-
-inspector:
-```sh
-npm run inspector
-```
